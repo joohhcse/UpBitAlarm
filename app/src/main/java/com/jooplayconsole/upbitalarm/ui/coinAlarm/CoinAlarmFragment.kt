@@ -1,9 +1,11 @@
 package com.jooplayconsole.upbitalarm.ui.coinAlarm
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -26,6 +28,16 @@ class CoinAlarmFragment : Fragment() {
         coinAlarmViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+
+//        Log.d("CreateNotif", "start>>>>>>>>>>>>>>>>")
+//
+//        val btnCreate : Button = findViewById(R.id.create)
+//        Log.d("[LOG]", "Button create click! > $btnCreate")     //Null 출력됨
+//
+//        btnCreate.setOnClickListener {
+//            Log.d("[LOG]", "Button create click!")
+//        }
+
         return root
     }
 }

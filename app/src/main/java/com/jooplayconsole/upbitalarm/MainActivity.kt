@@ -28,15 +28,6 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        Log.d("CreateNotif", "start>>>>>>>>>>>>>>>>")
 
-        val btnCreate = findViewById<Button>(R.id.create)
-        Log.d("[LOG]", "Button create click! > $btnCreate")     //Null 출력됨
-
-//        btnCreate.setOnClickListener {
-//            Log.d("[LOG]", "Button create click!")
-//        }
-
-//        R.id.create.
     }
 }
