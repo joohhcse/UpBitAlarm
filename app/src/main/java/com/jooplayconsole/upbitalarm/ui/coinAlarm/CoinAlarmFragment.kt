@@ -24,19 +24,18 @@ class CoinAlarmFragment : Fragment() {
         coinAlarmViewModel = ViewModelProvider(this).get(CoinAlarmViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_alarm, container, false)
         val textView: TextView = root.findViewById(R.id.text_dashboard)
+        val btnCreate : Button = root.findViewById(R.id.create)
+
+        Log.d("CreateNotif", "start>>>>>>>>>>>>>>>>")
+        Log.d("[LOG]", "Button create click! > $btnCreate")     //Null 출력됨
+
+        btnCreate.setOnClickListener {
+            Log.d("[LOG]", "Button create click!")
+        }
 
         coinAlarmViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
-
-//        Log.d("CreateNotif", "start>>>>>>>>>>>>>>>>")
-//
-//        val btnCreate : Button = findViewById(R.id.create)
-//        Log.d("[LOG]", "Button create click! > $btnCreate")     //Null 출력됨
-//
-//        btnCreate.setOnClickListener {
-//            Log.d("[LOG]", "Button create click!")
-//        }
 
         return root
     }
