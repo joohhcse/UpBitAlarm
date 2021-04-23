@@ -13,6 +13,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.jooplayconsole.upbitalarm.R
 
 class CoinAlarmFragment : Fragment() {
+    var iD = 0
+
+    companion object {
+        fun newInstance() = CoinAlarmFragment()
+    }
 
     private lateinit var coinAlarmViewModel: CoinAlarmViewModel
 
