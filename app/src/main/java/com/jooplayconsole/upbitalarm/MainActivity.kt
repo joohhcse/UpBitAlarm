@@ -33,6 +33,7 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
+import java.nio.charset.Charset
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
@@ -206,15 +207,40 @@ class MainActivity : AppCompatActivity() {
                     Log.d("[MainActivity]", "fun networking!!!")
                     Log.d("[MainActivity]", "content > $content")
 
-//                    val jsonStr = """$content""".trimIndent()
-                    val jsonStr = "$content"
+                    val jsonStr = content.toString()
                     Log.d("[MainActivity:jsonStr]", "jsonString > $jsonStr")
-                    val jsonObj = JSONObject(jsonStr)
-                    val curPrice = jsonObj.getDouble("trade_price")
 
+//                    [
+//                        {
+//                            "market":"KRW-BTC",   1
+//                            "candle_date_time_utc":"2021-04-26T13:49:00", 2
+//                            "candle_date_time_kst":"2021-04-26T22:49:00", 3
+//                            "opening_price":63486000.00000000,    4
+//                            "high_price":63486000.00000000,   5
+//                            "low_price":63481000.00000000,    6
+//                            "trade_price":63484000.00000000,  7
+//                            "timestamp":1619444952832,    8
+//                            "candle_acc_trade_price":49435153.10161000,   9
+//                            "candle_acc_trade_volume":0.77873530, 10
+//                            "unit":1
+//                        }
+//                    ]
+
+//                    val jsonObj = JSONArray(jsonStr)
+//                    val curPrice = jsonObj.getString(0)
+                    val jArray = JSONArray(jsonStr)
+                    for (i in 0 until jArray.length()) {
+                        val obj = jArray.getJSONObject(i)
+                        val market = obj.getString("market")
+                        val tradePrice = obj.getInt("trade_price")
+                        Log.d("[MainActivity]", "market($i) > $market")
+                        Log.d("[MainActivity]", "market($i) > $tradePrice")
+                    }
+
+//TEST
 //                    val curPrice = JSONObject(jsonStr).getJSONArray("trade_price")
 //                    val curPrice = JSONArray(jsonStr).
-                    Log.d("[MainActivity]", "curPrice > $curPrice")
+//                    Log.d("[MainActivity]", "curPrice > $curPrice")
 
                     // 스트림과 커넥션 해제
                     buffered.close()
@@ -228,5 +254,26 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    
+
+    //Test Temp function
+    fun onRequestCoinPrice(): Double {
+        val url = URL("https://api.upbit.com/v1/candles/minutes/1?market=KRW-BTC&count=1")
+        val conn = url.openConnection() as HttpURLConnection
+
+        BufferedReader(InputStreamReader (conn.inputStream, Charset.forName("UTF-8"))).use { reader ->
+            // Bid : 살 때,
+            // Ask : 팔 때,
+            // Last : 최근 거래 가격
+            // {"success":true,"message":"","result":{"Bid":0.65900000,"Ask":0.65993000,"Last":0.65993000}}
+            val response = reader.readLine()
+            val json = JSONObject(response)
+            val curPrice = (json["result"] as JSONObject).get("trade_price")
+            Log.d("[MainActivity]", "curPrice > $curPrice")
+
+            return curPrice as Double
+        }
+    }
+
+
+
 }
