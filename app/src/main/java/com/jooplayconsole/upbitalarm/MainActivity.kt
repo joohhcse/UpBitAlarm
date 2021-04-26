@@ -27,6 +27,13 @@ import com.jooplayconsole.upbitalarm.ui.coinAlarm.CoinAlarmFragment
 import com.jooplayconsole.upbitalarm.ui.currentPrice.CurrentPriceFragment
 import com.jooplayconsole.upbitalarm.ui.setting.SettingFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import org.json.JSONArray
+import org.json.JSONObject
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.net.HttpURLConnection
+import java.net.URL
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
@@ -116,7 +123,7 @@ class MainActivity : AppCompatActivity() {
         super.onBackPressed()
     }
 
-
+    //Alarm 호출
     public fun show() {
         Log.d("CoinAlarmActivity", "CoinAlarmActivity show()!")
 
@@ -140,8 +147,11 @@ class MainActivity : AppCompatActivity() {
 
         //RingtoneManager.TYPE_ALARM
 //        val ringtoneUri : Uri = RingtoneManager.getActualDefaultRingtoneUri(this,
-//            RingtoneManager.TYPE_NOTIFICATION)
+//            RingtoneManager.TYPE_ALARM)     //null : NullPointerException
 //        builder.setSound(ringtoneUri)
+
+        val ringtoneUri: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
+        builder.setSound(ringtoneUri)
 
         var vibrate = longArrayOf(0, 100, 200, 300)
         builder.setVibrate(vibrate)
@@ -166,8 +176,57 @@ class MainActivity : AppCompatActivity() {
         notificationManager.notify(1, builder.build())  //return notification object by builder
     }
 
+    //Alarm 해제
     public fun hide() {
         Log.d("CoinAlarmActivity", "CoinAlarmActivity hide()!")
 //        NotificationCompat.from(this).cancel(1)
     }
+
+    fun networking(urlString: String) {
+        thread(start=true) {
+            // 네트워킹 예외처리를 위한 try ~ catch 문
+            try {
+                val url = URL(urlString)
+
+                // 서버와의 연결 생성
+                val urlConnection = url.openConnection() as HttpURLConnection
+                urlConnection.requestMethod = "GET"
+
+                if (urlConnection.responseCode == HttpURLConnection.HTTP_OK) {
+                    // 데이터 읽기
+                    val streamReader = InputStreamReader(urlConnection.inputStream)
+                    val buffered = BufferedReader(streamReader)
+
+                    val content = StringBuilder()
+                    while(true) {
+                        val line = buffered.readLine() ?: break
+                        content.append(line)
+                    }
+
+                    Log.d("[MainActivity]", "fun networking!!!")
+                    Log.d("[MainActivity]", "content > $content")
+
+//                    val jsonStr = """$content""".trimIndent()
+                    val jsonStr = "$content"
+                    Log.d("[MainActivity:jsonStr]", "jsonString > $jsonStr")
+                    val jsonObj = JSONObject(jsonStr)
+                    val curPrice = jsonObj.getDouble("trade_price")
+
+//                    val curPrice = JSONObject(jsonStr).getJSONArray("trade_price")
+//                    val curPrice = JSONArray(jsonStr).
+                    Log.d("[MainActivity]", "curPrice > $curPrice")
+
+                    // 스트림과 커넥션 해제
+                    buffered.close()
+                    urlConnection.disconnect()
+                    runOnUiThread {
+                    // UI 작업
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+    
 }

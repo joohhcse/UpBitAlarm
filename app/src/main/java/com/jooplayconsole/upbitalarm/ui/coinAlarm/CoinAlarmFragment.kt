@@ -112,6 +112,10 @@ class CoinAlarmFragment : Fragment() {
         btn_remove.setOnClickListener {
             Log.d("[LOG:CoinAlarmFrg]", "Button remove click!")
 //            hide()
+
+            val mActivity = activity as MainActivity
+            mActivity.networking("https://api.upbit.com/v1/candles/minutes/1?market=KRW-BTC&count=1")
+
             Log.d("[LOG:CoinAlarmFrg]", "Button remove click finished!")
         }
 
@@ -123,6 +127,8 @@ class CoinAlarmFragment : Fragment() {
 //            dataPassListener.onDataPass("GoodBye")
 //        }
 //    }
+
+
 
 
 }
