@@ -1,9 +1,11 @@
 package com.jooplayconsole.upbitalarm
 
 import android.Manifest
+import android.app.AlertDialog
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -13,7 +15,9 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.widget.FrameLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
@@ -274,6 +278,33 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //alarmlist(btn2)
+    //Temp & Exam..
+    fun showDialogToSaveAlarm() {
+        val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val view = inflater.inflate(R.layout.alarm_list_1, null)
 
+        val alertDialog = AlertDialog.Builder(this)
+            .setTitle("코인 알람 설정하기")
+            .setPositiveButton("확인") { dialog, which ->
+
+                //  editText -> invitee로 받아오기
+                //  findViewById로 연결해줘야함
+//                val textView: TextView = view.findViewById(R.id.editText)
+//                val textView: TextView = "HelloWorld"
+//                var invitee = textView.text.toString()
+
+                // ...
+
+            }
+            .setNeutralButton("취소", null)
+            .create()
+
+        //  여백 눌러도 창 안없어지게
+        alertDialog.setCancelable(false)
+
+        alertDialog.setView(view)
+        alertDialog.show()
+    }
 
 }

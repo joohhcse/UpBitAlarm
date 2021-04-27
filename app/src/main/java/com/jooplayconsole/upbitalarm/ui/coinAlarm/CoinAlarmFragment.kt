@@ -1,15 +1,5 @@
 package com.jooplayconsole.upbitalarm.ui.coinAlarm
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Color
-import android.media.RingtoneManager
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,13 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.jooplayconsole.upbitalarm.MainActivity
 import com.jooplayconsole.upbitalarm.R
+import com.jooplayconsole.upbitalarm.MyDialog
 import kotlinx.android.synthetic.main.fragment_alarm.*
 
 class CoinAlarmFragment : Fragment() {
@@ -123,6 +112,13 @@ class CoinAlarmFragment : Fragment() {
             Log.d("[LOG:CoinAlarmFrg]", "Button test1 click!")
             val mActivity = activity as MainActivity
             mActivity.onRequestCoinPrice()
+        }
+
+        btn_test2.setOnClickListener {
+            Log.d("[LOG:CoinAlarmFrg]", "Button test2 click!")
+
+            val mActivity = activity as MainActivity
+            mActivity.showDialogToSaveAlarm()
         }
 
     }
