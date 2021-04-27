@@ -16,6 +16,7 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.widget.ArrayAdapter
 import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -76,6 +77,14 @@ class MainActivity : AppCompatActivity() {
         }
         false
     }
+
+    //20210428 coin_array spinner
+    val items: Array<String> = resources.getStringArray(R.array.coin_array)
+    val myAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
+//    val myAdapter = ArrayAdapter.createFromResource(this, items, android.R.layout.simple_spinner_dropdown_item)
+
+//    coin_spinner.adapter = myAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -306,5 +315,7 @@ class MainActivity : AppCompatActivity() {
         alertDialog.setView(view)
         alertDialog.show()
     }
+
+
 
 }

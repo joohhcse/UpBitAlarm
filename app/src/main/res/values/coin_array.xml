@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="coin_array">
+        <item>리플_XRP</item>
+        <item>던프로토콜_DAWN</item>
+        <item>비트토렌트_BTT</item>
+        <item>도지코인_DOGE</item>
+        <item>스트라이크_STRK</item>
+    </string-array>
+</resources>
