@@ -118,7 +118,7 @@ class CoinAlarmFragment : Fragment() {
             Log.d("[LOG:CoinAlarmFrg]", "Button test2 click!")
 
             val mActivity = activity as MainActivity
-            mActivity.showDialogToSaveAlarm()
+            mActivity.showSaveCoinAlarmDlg()
         }
 
     }

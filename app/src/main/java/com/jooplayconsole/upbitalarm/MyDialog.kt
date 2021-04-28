@@ -15,7 +15,7 @@ class MyDialog(context: Context) {
 
     fun start(content : String) {
         dlg.requestWindowFeature(Window.FEATURE_NO_TITLE)   //타이틀바 제거
-        dlg.setContentView(R.layout.alarm_list_1)     //다이얼로그에 사용할 xml 파일을 불러옴
+        dlg.setContentView(R.layout.dlg_set_alarm)     //다이얼로그에 사용할 xml 파일을 불러옴
         dlg.setCancelable(false)    //다이얼로그의 바깥 화면을 눌렀을 때 다이얼로그가 닫히지 않도록 함
 
         lblDesc = dlg.findViewById(R.id.content)

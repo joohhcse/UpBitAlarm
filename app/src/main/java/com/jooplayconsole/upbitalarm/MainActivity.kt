@@ -79,11 +79,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     //20210428 coin_array spinner
-    val items: Array<String> = resources.getStringArray(R.array.coin_array)
-    val myAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
-//    val myAdapter = ArrayAdapter.createFromResource(this, items, android.R.layout.simple_spinner_dropdown_item)
-
-//    coin_spinner.adapter = myAdapter
+//    val items: Array<String> = resources.getStringArray(R.array.coin_array)
+//    val myAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -288,10 +285,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     //alarmlist(btn2)
-    //Temp & Exam..
+    //AlertDialog Example
     fun showDialogToSaveAlarm() {
         val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val view = inflater.inflate(R.layout.alarm_list_1, null)
+        val view = inflater.inflate(R.layout.dlg_set_alarm, null)
 
         val alertDialog = AlertDialog.Builder(this)
             .setTitle("코인 알람 설정하기")
@@ -314,6 +311,11 @@ class MainActivity : AppCompatActivity() {
 
         alertDialog.setView(view)
         alertDialog.show()
+    }
+
+    fun showSaveCoinAlarmDlg() {
+        val dlg = SaveCoinAlarmDlg(this, "코인 알람 설정하기", "text_description")
+        dlg.show()
     }
 
 
