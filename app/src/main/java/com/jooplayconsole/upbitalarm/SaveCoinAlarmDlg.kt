@@ -17,9 +17,11 @@ class SaveCoinAlarmDlg(context: Context, var title: String, var content: String)
 
         text_title.text = title
 //        text_title.setTextColor(R.color.black)
-        text_description.text = content
         btn_positive.text = "설정"
         btn_negative.text = "닫기"
+        text_description_coin_name.text = "코인이름"
+        text_description_alarm_price.text = "코인가격"
+        text_description_condition.text = "조건"
 
         btn_positive.setOnClickListener {
             Toast.makeText(context, "설정 되었습니다", Toast.LENGTH_LONG).show()

@@ -2,9 +2,41 @@
 <resources>
     <string-array name="coin_array">
         <item>리플_XRP</item>
-        <item>던프로토콜_DAWN</item>
-        <item>비트토렌트_BTT</item>
         <item>도지코인_DOGE</item>
+        <item>칠리즈_CHZ</item>
+        <item>비트코인_BTC</item>
+        <item>이더리움_ETH</item>
+        <item>던프로토콜_DAWN</item>
+        <item>스와이프_SXP</item>
+        <item>메디블록_MED</item>
+        <item>비트토렌트_BTT</item>
+        <item>이더리움클래식_ETC</item>
+        <item>엑시인피니티_AXS</item>
+        <item>코박토큰_CBK</item>
+        <item>비체인_VET</item>
         <item>스트라이크_STRK</item>
+        <item>네오_NEO</item>
+        <item>퀸텀_QTUM</item>
+        <item>디센트럴랜드_MANA</item>
+        <item>코모도_KMD</item>
+        <item>이오스_EOS</item>
+        <item>에이다_ADA</item>
+        <item>메탈_MTL</item>
+        <item>리스크_LSK</item>
+        <item>퀴즈톡_QTCON</item>
+        <item>비트코인캐시_BCH</item>
+        <item>비트코인골드_BTG</item>
+        <item>넴_XEM</item>
+        <item>보라_BORA</item>
+        <item>밀크_MLK</item>
+        <item>스테이터네트워크토큰_SNT</item>
+        <item>트론_TRX</item>
+        <item>쎄타퓨엘_TFUEL</item>
+        <item>쎄타토큰_THETA</item>
+        <item>메타디움_META</item>
+        <item>시아코인_SC</item>
+        <item>애드엑스_ADX</item>
+        <item>펀디엑스_PUNDIX</item>
+        <item>스트라티스_STRAX</item>
     </string-array>
 </resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="coin_condition">
+        <item>이상일때</item>
+        <item>이하일때</item>
+    </string-array>
+</resources>

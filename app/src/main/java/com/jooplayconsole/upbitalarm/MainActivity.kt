@@ -265,23 +265,25 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //
     //Test Temp function
-    fun onRequestCoinPrice(): Double {
-        val url = URL("https://api.upbit.com/v1/candles/minutes/1?market=KRW-BTC&count=1")
-        val conn = url.openConnection() as HttpURLConnection
-
-        BufferedReader(InputStreamReader (conn.inputStream, Charset.forName("UTF-8"))).use { reader ->
-            // Bid : 살 때,
-            // Ask : 팔 때,
-            // Last : 최근 거래 가격
-            // {"success":true,"message":"","result":{"Bid":0.65900000,"Ask":0.65993000,"Last":0.65993000}}
-            val response = reader.readLine()
-            val json = JSONObject(response)
-            val curPrice = (json["result"] as JSONObject).get("trade_price")
-            Log.d("[MainActivity]", "curPrice > $curPrice")
-
-            return curPrice as Double
-        }
+    fun onRequestCoinPrice() {
+//        val url = URL("https://api.upbit.com/v1/candles/minutes/1?market=KRW-BTC&count=1")
+//        val conn = url.openConnection() as HttpURLConnection
+//
+//        //Thread 안돌려서 ERROR??
+//        BufferedReader(InputStreamReader (conn.inputStream, Charset.forName("UTF-8"))).use { reader ->
+//            // Bid : 살 때,
+//            // Ask : 팔 때,
+//            // Last : 최근 거래 가격
+//            // {"success":true,"message":"","result":{"Bid":0.65900000,"Ask":0.65993000,"Last":0.65993000}}
+//            val response = reader.readLine()
+//            val json = JSONObject(response)
+//            val curPrice = (json["result"] as JSONObject).get("trade_price")
+//            Log.d("[MainActivity]", "curPrice > $curPrice")
+//
+//            return curPrice as Double
+//        }
     }
 
     //alarmlist(btn2)

@@ -18,19 +18,77 @@
             android:layout_marginBottom="10dp"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="24sp"
+            android:textSize="24dp"
             tools:text="코인알람 설정하기" />
 
         <TextView
-            android:id="@+id/text_description"
+            android:id="@+id/text_description_coin_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
-            android:textAlignment="center"
+            android:paddingTop="10dp"
+            android:layout_marginBottom="0dp"
             android:paddingHorizontal="10dp"
             android:textColor="#000000"
-            android:textSize="16sp"
+            android:textSize="16dp"
+            tools:text="코인이름"
             />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/coinSpinner1"
+            android:background="@drawable/spinner_drawable"
+            android:padding="15dp"
+            android:textColor="@color/black"
+            android:entries="@array/coin_array"
+            />
+
+        <TextView
+            android:id="@+id/text_description_alarm_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_marginBottom="0dp"
+            android:paddingHorizontal="10dp"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            tools:text="코인가격"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_marginBottom="0dp"
+            android:paddingHorizontal="10dp"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            />
+
+        <TextView
+            android:id="@+id/text_description_condition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_marginBottom="0dp"
+            android:paddingHorizontal="10dp"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            tools:text="조건"
+            />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/coinSpinner2"
+            android:background="@drawable/spinner_drawable"
+            android:padding="15dp"
+            android:textColor="@color/black"
+            android:entries="@array/coin_condition"
+            />
+
 
         <LinearLayout
             android:layout_width="match_parent"

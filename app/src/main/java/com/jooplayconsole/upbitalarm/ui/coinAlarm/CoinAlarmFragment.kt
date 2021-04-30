@@ -108,6 +108,7 @@ class CoinAlarmFragment : Fragment() {
             Log.d("[LOG:CoinAlarmFrg]", "Button remove click finished!")
         }
 
+        //TEST1 : Button
         btn_test1.setOnClickListener {
             Log.d("[LOG:CoinAlarmFrg]", "Button test1 click!")
             val mActivity = activity as MainActivity

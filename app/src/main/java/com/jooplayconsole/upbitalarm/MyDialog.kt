@@ -6,6 +6,8 @@ import android.view.Window
 import android.widget.Button
 import android.widget.TextView
 
+//다운받은 example 클래스
+//사용안함
 class MyDialog(context: Context) {
     private val dlg = Dialog(context)   //부모 액티비티의 context 가 들어감
     private lateinit var lblDesc : TextView
