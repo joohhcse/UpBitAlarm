@@ -11,4 +11,6 @@ class CoinAlarmViewModel : ViewModel() {
         value = ""
     }
     val text: LiveData<String> = _text
+
+
 }

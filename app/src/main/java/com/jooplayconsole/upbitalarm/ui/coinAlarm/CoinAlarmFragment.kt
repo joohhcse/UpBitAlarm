@@ -1,5 +1,7 @@
 package com.jooplayconsole.upbitalarm.ui.coinAlarm
 
+import android.graphics.Paint
+import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,9 +12,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.jooplayconsole.upbitalarm.MainActivity
 import com.jooplayconsole.upbitalarm.R
 import com.jooplayconsole.upbitalarm.MyDialog
+import com.jooplayconsole.upbitalarm.databinding.FragmentAlarmBinding
 import kotlinx.android.synthetic.main.fragment_alarm.*
 
 class CoinAlarmFragment : Fragment() {
@@ -30,6 +34,8 @@ class CoinAlarmFragment : Fragment() {
     }
 
     private lateinit var coinAlarmViewModel: CoinAlarmViewModel
+
+    lateinit var binding: FragmentAlarmBinding
 
     //new
 //    var mCoinAlarmActivity : CoinAlarmActivity? = null
@@ -50,7 +56,10 @@ class CoinAlarmFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         setContentView(R.layout.fragment_alarm)
-        
+
+        //Fragment에서는 액티비티와 다르게 LayoutInflater를 onCreateView에서 넘겨받음
+        //lateinit으로 첨에 선언해주는게 편함
+        binding = FragmentAlarmBinding.inflate(inflater, container, false)
 
         //패캠강의 메모
         //fragment가 인터페이스를 처음 그릴때 onCreateView 호출된다
@@ -66,7 +75,6 @@ class CoinAlarmFragment : Fragment() {
 //        val btnCreate : Button = fragmentAlarm.findViewById(R.id.btn_create)
 //        val btnRemove : Button = fragmentAlarm.findViewById(R.id.btn_remove)
 //        Log.d("[LOG:CoinAlarmFrg]", "Button create click! > $btnCreate")     //Null 출력됨
-
 
 
         coinAlarmViewModel.text.observe(viewLifecycleOwner, Observer {
@@ -94,7 +102,55 @@ class CoinAlarmFragment : Fragment() {
 //        }
 //    }
 
-
-
-
 }
+
+
+
+//
+//class TodoAdapter(
+//    private val myDataset: List<Todo>,
+//    val onClickDeleteIcon: (todo: Todo) -> Unit,     //input이 하나고 output없는
+//    val onClickItem: (todo: Todo) -> Unit
+//) :
+//    RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
+//
+//    class TodoViewHolder(val binding: ItemTodoBinding) : RecyclerView.ViewHolder(binding.root)
+//
+//    override fun onCreateViewHolder(
+//        parent: ViewGroup,
+//        viewType: Int
+//    ): TodoAdapter.TodoViewHolder {
+//        val view = LayoutInflater.from(parent.context)
+//            .inflate(R.layout.item_todo, parent, false)
+//        return TodoViewHolder(ItemTodoBinding.bind(view))
+//    }
+//
+//    override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
+//        val todo = myDataset[position]
+//        holder.binding.todoText.text = todo.text
+//
+//        if(todo.isDone) {
+//            holder.binding.todoText.apply {
+//                paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+//                setTypeface(null, Typeface.ITALIC)
+//            }
+//        }
+//        else {
+//            holder.binding.todoText.apply {
+//                paintFlags = 0
+//                setTypeface(null, Typeface.NORMAL)
+//            }
+//        }
+//
+//        holder.binding.deleteImageView.setOnClickListener {
+//            onClickDeleteIcon.invoke(todo)
+//        }
+//
+//        holder.binding.root.setOnClickListener {
+//            onClickItem.invoke(todo)
+//        }
+//
+//    }
+//
+//    override fun getItemCount() = myDataset.size
+//}
