@@ -3,6 +3,7 @@ package com.jooplayconsole.upbitalarm.ui.coinAlarm
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -91,8 +92,6 @@ class CoinAlarmFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
-
     }
 
 //    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -104,6 +103,9 @@ class CoinAlarmFragment : Fragment() {
 
 }
 
+
+//DB없이 데이터 save/load
+//SharedPreference 방식
 
 
 //
